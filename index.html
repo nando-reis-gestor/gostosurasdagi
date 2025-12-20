@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cupcake House</title>
 
-  <!-- Swiper CSS (fixando versão para evitar problemas de URL) -->
+  <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://unpkg.com/swiper@11/swiper-bundle.min.css" />
 
   <!-- Font Awesome -->
@@ -46,16 +46,17 @@
       justify-content: center;
       align-items: center;
       padding: 0 4rem;
-      height: 20rem; /* Mantido como solicitado */
-      background: black; /* Mantido como solicitado */
+      height: 20rem;
+      background: black;
       position: relative;
-      overflow: visible; /* evita cortar a imagem se ela passar do header */
+      overflow: hidden; /* importante: mantém vagalumes APENAS na faixa preta */
     }
 
     .logo {
       position: absolute;
       top: 2rem;
       left: 4rem;
+      z-index: 3;
     }
 
     .logo img {
@@ -64,10 +65,11 @@
 
     .header-center-img {
       margin-top: 2rem;
+      z-index: 2;
     }
 
     .header-center-img img {
-      height: 25rem; /* Mantido como você colocou */
+      height: 25rem;
       width: auto;
       display: block;
     }
@@ -76,6 +78,7 @@
       position: absolute;
       top: 2rem;
       right: 4rem;
+      z-index: 3;
     }
 
     .icon-cart img {
@@ -87,6 +90,52 @@
     .icon-cart img:hover {
       cursor: pointer;
       background-color: #fff;
+    }
+
+    /* ===== VAGALUMES (somente no header) ===== */
+    .firefly {
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        #fffce1 0%,
+        #ffe26f 45%,
+        rgba(255, 226, 111, 0.2) 60%,
+        transparent 70%
+      );
+      box-shadow: 0 0 14px rgba(255, 246, 196, 1);
+      opacity: 0;
+      animation: firefly 4.5s linear infinite;
+      pointer-events: none;
+      z-index: 1; /* fica acima do fundo preto, mas abaixo dos elementos */
+    }
+
+    /* Posições individuais (ajustadas para CABER na faixa preta do header) */
+    .firefly--1 { left: 48%; top: 10.5rem; animation-delay: -0.5s; }
+    .firefly--2 { left: 60%; top: 11.5rem; animation-delay: -1.3s; }
+    .firefly--3 { left: 38%; top: 12.0rem; animation-delay: -2.1s; }
+    .firefly--4 { left: 55%; top: 13.0rem; animation-delay: -2.7s; }
+    .firefly--5 { left: 30%; top: 11.0rem; animation-delay: -3.1s; }
+    .firefly--6 { left: 68%; top: 11.8rem; animation-delay: -3.7s; }
+
+    @keyframes firefly {
+      0% {
+        transform: translate3d(0, 0, 0) scale(0.5);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      60% {
+        transform: translate3d(12px, -34px, 0) scale(1.05);
+        opacity: 1;
+      }
+      100% {
+        transform: translate3d(-8px, -70px, 0) scale(0.4);
+        opacity: 0;
+      }
     }
 
     /* CONTEÚDO PRINCIPAL */
@@ -115,7 +164,6 @@
       width: 5rem;
     }
 
-    /* CONTAINER GENÉRICO */
     .container {
       max-width: 120rem;
       margin: 0 auto;
@@ -141,13 +189,11 @@
       object-fit: cover;
     }
 
-    /* Remove sombras padrão do coverflow */
     .swiper-slide-shadow-left,
     .swiper-slide-shadow-right {
       display: none;
     }
 
-    /* Paginação e botões */
     .swiper-pagination-bullet {
       background: #fff;
       opacity: 0.7;
@@ -211,6 +257,14 @@
         width: 26rem;
         height: 30rem;
       }
+
+      /* reposiciona vagalumes para o header menor */
+      .firefly--1 { left: 45%; top: 7.8rem; }
+      .firefly--2 { left: 60%; top: 8.2rem; }
+      .firefly--3 { left: 35%; top: 8.7rem; }
+      .firefly--4 { left: 55%; top: 9.2rem; }
+      .firefly--5 { left: 25%; top: 8.0rem; }
+      .firefly--6 { left: 70%; top: 8.5rem; }
     }
   </style>
 </head>
@@ -218,6 +272,14 @@
 <body>
   <!-- HEADER -->
   <header>
+    <!-- Vagalumes (somente na faixa preta) -->
+    <div class="firefly firefly--1" aria-hidden="true"></div>
+    <div class="firefly firefly--2" aria-hidden="true"></div>
+    <div class="firefly firefly--3" aria-hidden="true"></div>
+    <div class="firefly firefly--4" aria-hidden="true"></div>
+    <div class="firefly firefly--5" aria-hidden="true"></div>
+    <div class="firefly firefly--6" aria-hidden="true"></div>
+
     <div class="logo">
       <img src="img/logo.png" alt="Cupcake House" />
     </div>
@@ -238,7 +300,6 @@
       <img src="img/cupcake-anim.gif" alt="Cupcake animado" />
     </div>
 
-    <!-- SLIDER “TRENDING” -->
     <section id="trending">
       <div class="container">
         <div class="swiper trending-slider">
@@ -286,7 +347,6 @@
             </div>
           </div>
 
-          <!-- Paginação e navegação -->
           <div class="swiper-pagination"></div>
           <div class="swiper-button-next"></div>
           <div class="swiper-button-prev"></div>
@@ -305,7 +365,6 @@
   <!-- SCRIPTS -->
   <script src="https://unpkg.com/swiper@11/swiper-bundle.min.js"></script>
   <script>
-    // Inicialização do Swiper com efeito coverflow
     var trendingSlider = new Swiper(".trending-slider", {
       effect: "coverflow",
       grabCursor: true,
