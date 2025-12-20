@@ -36,10 +36,9 @@
       color: white;
     }
 
-    /* HEADER */
+    /* HEADER (faixa preta) */
     header {
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       padding: 0 4rem;
@@ -49,24 +48,13 @@
       overflow: hidden;
     }
 
-    .logo {
-      position: absolute;
-      top: 2rem;
-      left: 4rem;
-      z-index: 3;
-    }
-
-    .logo img {
-      height: 6rem;
-    }
-
     .header-center-img {
-      margin-top: 2rem;
       z-index: 2;
     }
 
     .header-center-img img {
       height: 25rem;
+      display: block;
     }
 
     .icon-cart {
@@ -177,7 +165,7 @@
       color: #fff;
     }
 
-    /* REDES SOCIAIS */
+    /* REDES SOCIAIS (somente ícones FA agora) */
     .social {
       text-align: center;
       margin-bottom: 3rem;
@@ -186,21 +174,10 @@
     .social i {
       font-size: 2.4rem;
       margin: 0 1rem;
-      transition: 1s;
-      cursor: pointer;
-    }
-
-    /* 🔥 WHATSAPP EM 72px 🔥 */
-    .social-img {
-      width: 7.2rem;     /* 72px */
-      height: 7.2rem;    /* 72px */
-      margin: 0 1rem;
-      vertical-align: middle;
       transition: 0.3s;
       cursor: pointer;
     }
 
-    .social-img:hover,
     .social i:hover {
       opacity: 0.7;
     }
@@ -219,12 +196,6 @@
         width: 26rem;
         height: 30rem;
       }
-
-      /* opcional: reduzir um pouco no mobile */
-      .social-img {
-        width: 6rem;
-        height: 6rem;
-      }
     }
   </style>
 </head>
@@ -233,6 +204,7 @@
 
   <!-- HEADER -->
   <header>
+    <!-- Vagalumes -->
     <div class="firefly firefly--1"></div>
     <div class="firefly firefly--2"></div>
     <div class="firefly firefly--3"></div>
@@ -240,14 +212,12 @@
     <div class="firefly firefly--5"></div>
     <div class="firefly firefly--6"></div>
 
-    <div class="logo">
-      <img src="img/logo.png" alt="Cupcake House" />
-    </div>
-
+    <!-- Logo central -->
     <div class="header-center-img">
       <img src="logogiovana.png" alt="Logo Giovana" />
     </div>
 
+    <!-- Carrinho -->
     <div class="icon-cart">
       <img src="img/cart.png" alt="Carrinho" />
     </div>
@@ -285,7 +255,6 @@
   <div class="social">
     <i class="fab fa-instagram"></i>
     <i class="fab fa-facebook"></i>
-    <img src="whats.png" alt="WhatsApp" class="social-img" />
   </div>
 
   <!-- SCRIPTS -->
