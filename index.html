@@ -23,14 +23,11 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      list-style-type: none;
-      text-decoration: none;
     }
 
     html {
       font-size: 62.5%;
       font-family: sans-serif;
-      scroll-behavior: smooth;
     }
 
     body {
@@ -49,7 +46,7 @@
       height: 20rem;
       background: black;
       position: relative;
-      overflow: hidden; /* importante: mantém vagalumes APENAS na faixa preta */
+      overflow: hidden;
     }
 
     .logo {
@@ -70,8 +67,6 @@
 
     .header-center-img img {
       height: 25rem;
-      width: auto;
-      display: block;
     }
 
     .icon-cart {
@@ -92,7 +87,7 @@
       background-color: #fff;
     }
 
-    /* ===== VAGALUMES (somente no header) ===== */
+    /* ===== VAGALUMES ===== */
     .firefly {
       position: absolute;
       width: 7px;
@@ -109,38 +104,25 @@
       opacity: 0;
       animation: firefly 4.5s linear infinite;
       pointer-events: none;
-      z-index: 1; /* fica acima do fundo preto, mas abaixo dos elementos */
+      z-index: 1;
     }
 
-    /* Posições individuais (ajustadas para CABER na faixa preta do header) */
     .firefly--1 { left: 48%; top: 10.5rem; animation-delay: -0.5s; }
     .firefly--2 { left: 60%; top: 11.5rem; animation-delay: -1.3s; }
-    .firefly--3 { left: 38%; top: 12.0rem; animation-delay: -2.1s; }
-    .firefly--4 { left: 55%; top: 13.0rem; animation-delay: -2.7s; }
-    .firefly--5 { left: 30%; top: 11.0rem; animation-delay: -3.1s; }
+    .firefly--3 { left: 38%; top: 12rem; animation-delay: -2.1s; }
+    .firefly--4 { left: 55%; top: 13rem; animation-delay: -2.7s; }
+    .firefly--5 { left: 30%; top: 11rem; animation-delay: -3.1s; }
     .firefly--6 { left: 68%; top: 11.8rem; animation-delay: -3.7s; }
 
     @keyframes firefly {
-      0% {
-        transform: translate3d(0, 0, 0) scale(0.5);
-        opacity: 0;
-      }
-      20% {
-        opacity: 1;
-      }
-      60% {
-        transform: translate3d(12px, -34px, 0) scale(1.05);
-        opacity: 1;
-      }
-      100% {
-        transform: translate3d(-8px, -70px, 0) scale(0.4);
-        opacity: 0;
-      }
+      0% { transform: translate(0,0) scale(0.5); opacity: 0; }
+      20% { opacity: 1; }
+      60% { transform: translate(12px,-34px) scale(1.05); opacity: 1; }
+      100% { transform: translate(-8px,-70px) scale(0.4); opacity: 0; }
     }
 
-    /* CONTEÚDO PRINCIPAL */
+    /* CONTEÚDO */
     main {
-      display: block;
       margin: 5rem 0;
     }
 
@@ -150,18 +132,16 @@
       align-items: center;
       gap: 2rem;
       margin-bottom: 4rem;
-      padding: 0 2rem;
       text-align: center;
     }
 
     .title h1 {
       font-size: 3.2rem;
-      color: white;
     }
 
     .title img {
-      border-radius: 50%;
       width: 5rem;
+      border-radius: 50%;
     }
 
     .container {
@@ -172,14 +152,12 @@
 
     /* SWIPER */
     .trending-slider {
-      width: 100%;
       padding: 4rem 0 6rem;
     }
 
     .trending-slide {
       display: flex;
       justify-content: center;
-      align-items: center;
     }
 
     .trending-slide-img img {
@@ -194,15 +172,6 @@
       display: none;
     }
 
-    .swiper-pagination-bullet {
-      background: #fff;
-      opacity: 0.7;
-    }
-
-    .swiper-pagination-bullet-active {
-      background: white;
-    }
-
     .swiper-button-next,
     .swiper-button-prev {
       color: #fff;
@@ -211,81 +180,64 @@
     /* REDES SOCIAIS */
     .social {
       text-align: center;
-      width: 100%;
-      height: 3rem;
       margin-bottom: 3rem;
     }
 
-    .social i {
+    .social i,
+    .social-img {
       font-size: 2.4rem;
+      width: 2.4rem;
+      height: 2.4rem;
       margin: 0 1rem;
       transition: 1s;
-      color: white;
+      vertical-align: middle;
+      cursor: pointer;
     }
 
+    .social-img {
+      opacity: 1;
+    }
+
+    .social-img:hover,
     .social i:hover {
-      cursor: pointer;
-      color: lightgray;
+      opacity: 0.7;
     }
 
     /* RESPONSIVO */
     @media (max-width: 768px) {
       header {
-        padding: 0 2rem;
         height: 15rem;
-      }
-
-      .logo {
-        top: 1rem;
-        left: 2rem;
-      }
-
-      .icon-cart {
-        top: 1rem;
-        right: 2rem;
       }
 
       .header-center-img img {
         height: 18rem;
       }
 
-      .title {
-        flex-direction: column;
-      }
-
       .trending-slide-img img {
         width: 26rem;
         height: 30rem;
       }
-
-      /* reposiciona vagalumes para o header menor */
-      .firefly--1 { left: 45%; top: 7.8rem; }
-      .firefly--2 { left: 60%; top: 8.2rem; }
-      .firefly--3 { left: 35%; top: 8.7rem; }
-      .firefly--4 { left: 55%; top: 9.2rem; }
-      .firefly--5 { left: 25%; top: 8.0rem; }
-      .firefly--6 { left: 70%; top: 8.5rem; }
     }
   </style>
 </head>
 
 <body>
+
   <!-- HEADER -->
   <header>
-    <!-- Vagalumes (somente na faixa preta) -->
-    <div class="firefly firefly--1" aria-hidden="true"></div>
-    <div class="firefly firefly--2" aria-hidden="true"></div>
-    <div class="firefly firefly--3" aria-hidden="true"></div>
-    <div class="firefly firefly--4" aria-hidden="true"></div>
-    <div class="firefly firefly--5" aria-hidden="true"></div>
-    <div class="firefly firefly--6" aria-hidden="true"></div>
+    <div class="firefly firefly--1"></div>
+    <div class="firefly firefly--2"></div>
+    <div class="firefly firefly--3"></div>
+    <div class="firefly firefly--4"></div>
+    <div class="firefly firefly--5"></div>
+    <div class="firefly firefly--6"></div>
 
     <div class="logo">
       <img src="img/logo.png" alt="Cupcake House" />
     </div>
 
     <div class="header-center-img">
-      <img src="logogiovana.png" alt="Logotipo Giovana" />
+      <img src="logogiovana.png" alt="Logo Giovana" />
     </div>
 
     <div class="icon-cart">
@@ -293,7 +245,7 @@
     </div>
   </header>
 
-  <!-- CONTEÚDO PRINCIPAL -->
+  <!-- CONTEÚDO -->
   <main>
     <div class="title">
       <h1>Feito à mão e com Coração!</h1>
@@ -304,47 +256,13 @@
       <div class="container">
         <div class="swiper trending-slider">
           <div class="swiper-wrapper">
-            <div class="swiper-slide trending-slide">
-              <div class="trending-slide-img">
-                <img src="img/cupcake-pink.png" alt="Cupcake rosa" />
-              </div>
-            </div>
-
-            <div class="swiper-slide trending-slide">
-              <div class="trending-slide-img">
-                <img src="img/cupcake-blue.png" alt="Cupcake azul" />
-              </div>
-            </div>
-
-            <div class="swiper-slide trending-slide">
-              <div class="trending-slide-img">
-                <img src="img/cupcake-purple.png" alt="Cupcake roxo" />
-              </div>
-            </div>
-
-            <div class="swiper-slide trending-slide">
-              <div class="trending-slide-img">
-                <img src="img/cupcake-red.png" alt="Cupcake vermelho" />
-              </div>
-            </div>
-
-            <div class="swiper-slide trending-slide">
-              <div class="trending-slide-img">
-                <img src="img/cupcake-white.png" alt="Cupcake branco" />
-              </div>
-            </div>
-
-            <div class="swiper-slide trending-slide">
-              <div class="trending-slide-img">
-                <img src="img/cupcake-yellow.png" alt="Cupcake amarelo" />
-              </div>
-            </div>
-
-            <div class="swiper-slide trending-slide">
-              <div class="trending-slide-img">
-                <img src="img/cupcake-black.png" alt="Cupcake preto" />
-              </div>
-            </div>
+            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="img/cupcake-pink.png"></div></div>
+            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="img/cupcake-blue.png"></div></div>
+            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="img/cupcake-purple.png"></div></div>
+            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="img/cupcake-red.png"></div></div>
+            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="img/cupcake-white.png"></div></div>
+            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="img/cupcake-yellow.png"></div></div>
+            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="img/cupcake-black.png"></div></div>
           </div>
 
           <div class="swiper-pagination"></div>
@@ -359,21 +277,19 @@
   <div class="social">
     <i class="fab fa-instagram"></i>
     <i class="fab fa-facebook"></i>
-    <i class="whats.png"></i>
+    <img src="whats.png" alt="WhatsApp" class="social-img" />
   </div>
 
   <!-- SCRIPTS -->
   <script src="https://unpkg.com/swiper@11/swiper-bundle.min.js"></script>
   <script>
-    var trendingSlider = new Swiper(".trending-slider", {
+    new Swiper(".trending-slider", {
       effect: "coverflow",
-      grabCursor: true,
       centeredSlides: true,
       loop: true,
       slidesPerView: "auto",
       coverflowEffect: {
         rotate: 0,
-        stretch: 0,
         depth: 100,
         modifier: 2.5
       },
@@ -387,5 +303,6 @@
       }
     });
   </script>
+
 </body>
 </html>
