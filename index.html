@@ -34,6 +34,7 @@
       font-size: 1.6rem;
       background: #6a0dad;
       color: white;
+      overflow-x: hidden;
     }
 
     /* HEADER (faixa preta) */
@@ -114,22 +115,38 @@
       margin: 5rem 0;
     }
 
-    .title {
+    .title-container {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
       gap: 2rem;
       margin-bottom: 4rem;
       text-align: center;
     }
 
-    .title h1 {
+    .title-container h1 {
       font-size: 3.2rem;
     }
 
-    .title img {
-      width: 5rem;
-      border-radius: 50%;
+    /* BOTÃO WHATSAPP */
+    .btn-whatsapp {
+      background-color: #25d366;
+      color: white;
+      text-decoration: none;
+      padding: 1.5rem 3rem;
+      border-radius: 5rem;
+      font-weight: bold;
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: transform 0.3s, background-color 0.3s;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-whatsapp:hover {
+      background-color: #1eb954;
+      transform: scale(1.05);
     }
 
     .container {
@@ -155,17 +172,12 @@
       object-fit: cover;
     }
 
-    .swiper-slide-shadow-left,
-    .swiper-slide-shadow-right {
-      display: none;
-    }
-
     .swiper-button-next,
     .swiper-button-prev {
       color: #fff;
     }
 
-    /* REDES SOCIAIS (somente ícones FA agora) */
+    /* REDES SOCIAIS */
     .social {
       text-align: center;
       margin-bottom: 3rem;
@@ -176,6 +188,7 @@
       margin: 0 1rem;
       transition: 0.3s;
       cursor: pointer;
+      color: white;
     }
 
     .social i:hover {
@@ -196,6 +209,10 @@
         width: 26rem;
         height: 30rem;
       }
+
+      .title-container h1 {
+        font-size: 2.4rem;
+      }
     }
   </style>
 </head>
@@ -204,7 +221,6 @@
 
   <!-- HEADER -->
   <header>
-    <!-- Vagalumes -->
     <div class="firefly firefly--1"></div>
     <div class="firefly firefly--2"></div>
     <div class="firefly firefly--3"></div>
@@ -212,22 +228,25 @@
     <div class="firefly firefly--5"></div>
     <div class="firefly firefly--6"></div>
 
-    <!-- Logo central -->
     <div class="header-center-img">
       <img src="logogiovana.png" alt="Logo Giovana" />
     </div>
 
-    <!-- Carrinho -->
     <div class="icon-cart">
       <img src="img/cart.png" alt="Carrinho" />
     </div>
   </header>
 
-  <!-- CONTEÚDO -->
+  <!-- CONTEÚDO PRINCIPAL -->
   <main>
-    <div class="title">
+    <div class="title-container">
       <h1>Feito à mão e com Coração!</h1>
-      <img src="img/cupcake-anim.gif" alt="Cupcake animado" />
+      
+      <!-- Botão do WhatsApp -->
+      <a href="https://wa.me/556281890481" class="btn-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        Peça pelo WhatsApp
+      </a>
     </div>
 
     <section id="trending">
