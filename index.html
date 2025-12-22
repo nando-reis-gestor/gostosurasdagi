@@ -155,7 +155,7 @@
       padding: 0 2rem;
     }
 
-    /* SWIPER */
+    /* SWIPER (Carrossel) */
     .trending-slider {
       padding: 4rem 0 6rem;
     }
@@ -163,6 +163,7 @@
     .trending-slide {
       display: flex;
       justify-content: center;
+      background: transparent; /* Remove qualquer fundo do slide */
     }
 
     .trending-slide-img img {
@@ -170,12 +171,21 @@
       height: 42rem;
       border-radius: 2rem;
       object-fit: cover;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      box-shadow: none; /* REMOVIDO: Sombra da imagem */
     }
 
+    /* Ajuste das Setas (Removendo fundos e sombras) */
     .swiper-button-next,
     .swiper-button-prev {
-      color: #fff;
+      color: #fff !important;
+      background: transparent !important; /* REMOVIDO: Fundo escuro */
+      box-shadow: none !important; /* REMOVIDO: Sombra das setas */
+    }
+
+    /* Remove o efeito de bloco que o Swiper às vezes coloca por padrão */
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+      background: transparent !important;
     }
 
     .swiper-pagination-bullet {
@@ -258,13 +268,13 @@
       <div class="container">
         <div class="swiper trending-slider">
           <div class="swiper-wrapper">
-            <!-- Novas imagens adicionadas -->
+            <!-- Suas Imagens -->
             <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="marron.png"></div></div>
             <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="cenoura.png"></div></div>
             <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="branco.png"></div></div>
             <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="3bolo.png"></div></div>
             
-            <!-- Imagens anteriores mantidas caso queira -->
+            <!-- Outras imagens (ajuste o caminho se necessário) -->
             <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="img/cupcake-pink.png"></div></div>
             <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="img/cupcake-blue.png"></div></div>
             <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="img/cupcake-purple.png"></div></div>
@@ -295,7 +305,8 @@
       coverflowEffect: {
         rotate: 0,
         depth: 100,
-        modifier: 2.5
+        modifier: 2.5,
+        slideShadows: false // DESATIVADO: Remove a sombra/brilho escuro sobre os cards laterais
       },
       pagination: {
         el: ".swiper-pagination",
