@@ -3,321 +3,241 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cupcake House</title>
+  <title>Gostosuras da Gi - Vitrine Limpa</title>
 
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://unpkg.com/swiper@11/swiper-bundle.min.css" />
-
   <!-- Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
   <style>
-    *,
-    *::before,
-    *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html {
-      font-size: 62.5%;
-      font-family: sans-serif;
-    }
+    html { font-size: 62.5%; font-family: 'Poppins', sans-serif; }
 
     body {
       font-size: 1.6rem;
-      background: #6a0dad;
+      background: #6a0dad; /* Roxo principal */
       color: white;
       overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* HEADER (faixa preta) */
+    /* HEADER */
     header {
+      background: black;
+      height: 12rem;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 0 4rem;
-      height: 20rem;
-      background: black;
       position: relative;
-      overflow: hidden;
     }
+    .header-logo { height: 10rem; }
 
-    .header-center-img {
-      z-index: 2;
-    }
-
-    .header-center-img img {
-      height: 25rem;
-      display: block;
-    }
-
-    .icon-cart {
-      position: absolute;
-      top: 2rem;
-      right: 4rem;
-      z-index: 3;
-    }
-
-    .icon-cart img {
-      width: 6rem;
-      border-radius: 50%;
-      transition: 1s;
-    }
-
-    .icon-cart img:hover {
-      cursor: pointer;
-      background-color: #fff;
-    }
-
-    /* ===== VAGALUMES ===== */
-    .firefly {
-      position: absolute;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: radial-gradient(
-        circle,
-        #fffce1 0%,
-        #ffe26f 45%,
-        rgba(255, 226, 111, 0.2) 60%,
-        transparent 70%
-      );
-      box-shadow: 0 0 14px rgba(255, 246, 196, 1);
-      opacity: 0;
-      animation: firefly 4.5s linear infinite;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .firefly--1 { left: 48%; top: 10.5rem; animation-delay: -0.5s; }
-    .firefly--2 { left: 60%; top: 11.5rem; animation-delay: -1.3s; }
-    .firefly--3 { left: 38%; top: 12rem; animation-delay: -2.1s; }
-    .firefly--4 { left: 55%; top: 13rem; animation-delay: -2.7s; }
-    .firefly--5 { left: 30%; top: 11rem; animation-delay: -3.1s; }
-    .firefly--6 { left: 68%; top: 11.8rem; animation-delay: -3.7s; }
-
-    @keyframes firefly {
-      0% { transform: translate(0,0) scale(0.5); opacity: 0; }
-      20% { opacity: 1; }
-      60% { transform: translate(12px,-34px) scale(1.05); opacity: 1; }
-      100% { transform: translate(-8px,-70px) scale(0.4); opacity: 0; }
-    }
-
-    /* CONTEÚDO PRINCIPAL */
-    main {
-      margin: 5rem 0;
-    }
-
-    .title-container {
+    /* BOTÃO WHATSAPP NO TOPO */
+    .top-action {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
-      margin-bottom: 4rem;
-      text-align: center;
+      justify-content: center;
+      padding: 2rem 0;
     }
-
-    .title-container h1 {
-      font-size: 3.2rem;
-    }
-
-    /* BOTÃO WHATSAPP */
     .btn-whatsapp {
       background-color: #25d366;
       color: white;
       text-decoration: none;
-      padding: 1.5rem 3rem;
+      padding: 1.2rem 2.5rem;
       border-radius: 5rem;
       font-weight: bold;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       display: flex;
       align-items: center;
       gap: 1rem;
-      transition: transform 0.3s, background-color 0.3s;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .btn-whatsapp:hover {
-      background-color: #1eb954;
-      transform: scale(1.05);
-    }
-
-    .container {
-      max-width: 120rem;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* SWIPER (Carrossel) */
-    .trending-slider {
-      padding: 4rem 0 6rem;
-    }
-
-    .trending-slide {
-      display: flex;
-      justify-content: center;
-      background: transparent; /* Remove qualquer fundo do slide */
-    }
-
-    .trending-slide-img img {
-      width: 37rem;
-      height: 42rem;
-      border-radius: 2rem;
-      object-fit: cover;
-      box-shadow: none; /* REMOVIDO: Sombra da imagem */
-    }
-
-    /* Ajuste das Setas (Removendo fundos e sombras) */
-    .swiper-button-next,
-    .swiper-button-prev {
-      color: #fff !important;
-      background: transparent !important; /* REMOVIDO: Fundo escuro */
-      box-shadow: none !important; /* REMOVIDO: Sombra das setas */
-    }
-
-    /* Remove o efeito de bloco que o Swiper às vezes coloca por padrão */
-    .swiper-button-next::after,
-    .swiper-button-prev::after {
-      background: transparent !important;
-    }
-
-    .swiper-pagination-bullet {
-        background: #fff;
-    }
-
-    /* REDES SOCIAIS */
-    .social {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .social i {
-      font-size: 2.4rem;
-      margin: 0 1rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
       transition: 0.3s;
-      cursor: pointer;
-      color: white;
+    }
+    .btn-whatsapp:hover { transform: scale(1.05); }
+
+    /* CONTAINER DO CARROSSEL */
+    .main-carousel-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 5rem;
     }
 
-    .social i:hover {
-      opacity: 0.7;
+    .swiper {
+      width: 100%;
+      max-width: 50rem; /* Limita a largura para ficar organizado */
+      padding-bottom: 5rem;
     }
 
-    /* RESPONSIVO */
-    @media (max-width: 768px) {
-      header {
-        height: 15rem;
-      }
+    .swiper-slide {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: 0.5s;
+    }
 
-      .header-center-img img {
-        height: 18rem;
-      }
+    .product-img {
+      width: 32rem;
+      height: 32rem;
+      object-fit: contain; /* Garante que o pote apareça inteiro sem cortes */
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+    }
 
-      .trending-slide-img img {
-        width: 26rem;
-        height: 30rem;
-      }
+    /* CARD GELO ELÁSTICO */
+    .info-card {
+      background: rgba(255, 255, 255, 0.15); /* Tom gelo */
+      backdrop-filter: blur(15px); /* Efeito transparente */
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 2.5rem;
+      padding: 2.5rem;
+      width: 90%;
+      margin-top: 2rem;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      
+      /* Animação Elástica Inicial */
+      transform: scale(0.8) translateY(30px);
+      opacity: 0;
+      transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
 
-      .title-container h1 {
-        font-size: 2.4rem;
-      }
+    /* Quando o slide fica ativo, o card "pula" pra tela */
+    .swiper-slide-active .info-card {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+
+    .info-card h3 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: #fff;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    .info-card p {
+      font-size: 1.5rem;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.4;
+    }
+
+    /* SETAS DE NAVEGAÇÃO NAS EXTREMIDADES */
+    .swiper-button-next, .swiper-button-prev {
+      color: white !important;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    /* PAGINAÇÃO (BOLINHAS) */
+    .swiper-pagination-bullet { background: rgba(255,255,255,0.5); opacity: 1; }
+    .swiper-pagination-bullet-active { background: white; width: 2rem; border-radius: 1rem; }
+
+    /* RODAPÉ SOCIAL */
+    footer {
+      text-align: center;
+      padding: 2rem;
+    }
+    footer i { font-size: 2.4rem; margin: 0 1.5rem; color: white; cursor: pointer; }
+
+    @media (max-width: 480px) {
+      .product-img { width: 25rem; height: 25rem; }
+      .swiper { max-width: 90%; }
     }
   </style>
 </head>
-
 <body>
 
-  <!-- HEADER -->
   <header>
-    <div class="firefly firefly--1"></div>
-    <div class="firefly firefly--2"></div>
-    <div class="firefly firefly--3"></div>
-    <div class="firefly firefly--4"></div>
-    <div class="firefly firefly--5"></div>
-    <div class="firefly firefly--6"></div>
-
-    <div class="header-center-img">
-      <img src="logogiovana.png" alt="Logo Giovana" />
-    </div>
-
-    <div class="icon-cart">
-      <img src="img/cart.png" alt="Carrinho" />
-    </div>
+    <img src="logogiovana.png" alt="Gostosuras da Gi" class="header-logo">
   </header>
 
-  <!-- CONTEÚDO PRINCIPAL -->
-  <main>
-    <div class="title-container">
-      <h1>Feito à mão e com Coração!</h1>
-      
-      <!-- Botão do WhatsApp -->
-      <a href="https://wa.me/556281890481" class="btn-whatsapp" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-        Peça pelo WhatsApp
-      </a>
-    </div>
-
-    <section id="trending">
-      <div class="container">
-        <div class="swiper trending-slider">
-          <div class="swiper-wrapper">
-            <!-- Suas Imagens -->
-            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="marron.png"></div></div>
-            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="cenoura.png"></div></div>
-            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="branco.png"></div></div>
-            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="3bolo.png"></div></div>
-            
-            <!-- Outras imagens (ajuste o caminho se necessário) -->
-            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="img/cupcake-pink.png"></div></div>
-            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="img/cupcake-blue.png"></div></div>
-            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="img/cupcake-purple.png"></div></div>
-          </div>
-
-          <div class="swiper-pagination"></div>
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- REDES SOCIAIS -->
-  <div class="social">
-    <i class="fab fa-instagram"></i>
-    <i class="fab fa-facebook"></i>
+  <div class="top-action">
+    <a href="https://wa.me/556281890481" class="btn-whatsapp" target="_blank">
+      <i class="fab fa-whatsapp"></i> Peça pelo WhatsApp
+    </a>
   </div>
 
-  <!-- SCRIPTS -->
+  <main class="main-carousel-container">
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        
+        <!-- Pote 1 -->
+        <div class="swiper-slide">
+          <img src="marron.png" alt="Pote Marrom" class="product-img">
+          <div class="info-card">
+            <h3>Sabor Chocolate</h3>
+            <p>Massa fofinha de cacau</p>
+            <p>Cobertura de brigadeiro gourmet</p>
+          </div>
+        </div>
+
+        <!-- Pote 2 -->
+        <div class="swiper-slide">
+          <img src="cenoura.png" alt="Pote Cenoura" class="product-img">
+          <div class="info-card">
+            <h3>Sabor Cenoura</h3>
+            <p>Recheio de chocolate meio amargo</p>
+            <p>Leite condensado cremoso</p>
+          </div>
+        </div>
+
+        <!-- Pote 3 -->
+        <div class="swiper-slide">
+          <img src="branco.png" alt="Pote Branco" class="product-img">
+          <div class="info-card">
+            <h3>Sabor Ninho</h3>
+            <p>Creme de leite ninho original</p>
+            <p>Toque suave de baunilha</p>
+          </div>
+        </div>
+
+        <!-- Pote 4 -->
+        <div class="swiper-slide">
+          <img src="3bolo.png" alt="Combo" class="product-img">
+          <div class="info-card">
+            <h3>Combo Festa</h3>
+            <p>Três camadas de pura gostosura</p>
+            <p>Ideal para compartilhar</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Controles -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </main>
+
+  <footer>
+    <i class="fab fa-instagram"></i>
+    <i class="fab fa-facebook"></i>
+  </footer>
+
+  <!-- Swiper JS -->
   <script src="https://unpkg.com/swiper@11/swiper-bundle.min.js"></script>
+
   <script>
-    new Swiper(".trending-slider", {
-      effect: "coverflow",
-      centeredSlides: true,
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1, // Apenas um pote por vez
+      spaceBetween: 30,
       loop: true,
-      slidesPerView: "auto",
-      coverflowEffect: {
-        rotate: 0,
-        depth: 100,
-        modifier: 2.5,
-        slideShadows: false // DESATIVADO: Remove a sombra/brilho escuro sobre os cards laterais
-      },
+      centeredSlides: true,
+      speed: 600,
       pagination: {
         el: ".swiper-pagination",
-        clickable: true
+        clickable: true,
       },
       navigation: {
         nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev"
-      }
+        prevEl: ".swiper-button-prev",
+      },
     });
   </script>
-
 </body>
 </html>
