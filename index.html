@@ -110,7 +110,7 @@
       100% { transform: translate(-8px,-70px) scale(0.4); opacity: 0; }
     }
 
-    /* CONTEÚDO */
+    /* CONTEÚDO PRINCIPAL */
     main {
       margin: 5rem 0;
     }
@@ -141,7 +141,7 @@
       align-items: center;
       gap: 1rem;
       transition: transform 0.3s, background-color 0.3s;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     }
 
     .btn-whatsapp:hover {
@@ -170,11 +170,16 @@
       height: 42rem;
       border-radius: 2rem;
       object-fit: cover;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
     .swiper-button-next,
     .swiper-button-prev {
       color: #fff;
+    }
+
+    .swiper-pagination-bullet {
+        background: #fff;
     }
 
     /* REDES SOCIAIS */
@@ -253,13 +258,16 @@
       <div class="container">
         <div class="swiper trending-slider">
           <div class="swiper-wrapper">
+            <!-- Novas imagens adicionadas -->
+            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="marron.png"></div></div>
+            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="cenoura.png"></div></div>
+            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="branco.png"></div></div>
+            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="3bolo.png"></div></div>
+            
+            <!-- Imagens anteriores mantidas caso queira -->
             <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="img/cupcake-pink.png"></div></div>
             <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="img/cupcake-blue.png"></div></div>
             <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="img/cupcake-purple.png"></div></div>
-            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="img/cupcake-red.png"></div></div>
-            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="img/cupcake-white.png"></div></div>
-            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="img/cupcake-yellow.png"></div></div>
-            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="img/cupcake-black.png"></div></div>
           </div>
 
           <div class="swiper-pagination"></div>
