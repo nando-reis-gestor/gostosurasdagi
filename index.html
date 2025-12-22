@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gostosuras da Gi - Vitrine</title>
+  <title>Cupcake House</title>
 
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://unpkg.com/swiper@11/swiper-bundle.min.css" />
@@ -27,7 +27,7 @@
 
     html {
       font-size: 62.5%;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: sans-serif;
     }
 
     body {
@@ -37,7 +37,7 @@
       overflow-x: hidden;
     }
 
-    /* HEADER */
+    /* HEADER (faixa preta) */
     header {
       display: flex;
       justify-content: center;
@@ -49,11 +49,13 @@
       overflow: hidden;
     }
 
+    .header-center-img {
+      z-index: 2;
+    }
+
     .header-center-img img {
       height: 25rem;
       display: block;
-      z-index: 2;
-      position: relative;
     }
 
     .icon-cart {
@@ -66,31 +68,52 @@
     .icon-cart img {
       width: 6rem;
       border-radius: 50%;
+      transition: 1s;
     }
 
-    /* VAGALUMES */
+    .icon-cart img:hover {
+      cursor: pointer;
+      background-color: #fff;
+    }
+
+    /* ===== VAGALUMES ===== */
     .firefly {
       position: absolute;
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: radial-gradient(circle, #fffce1 0%, #ffe26f 45%, transparent 70%);
-      box-shadow: 0 0 14px #fff6c4;
+      background: radial-gradient(
+        circle,
+        #fffce1 0%,
+        #ffe26f 45%,
+        rgba(255, 226, 111, 0.2) 60%,
+        transparent 70%
+      );
+      box-shadow: 0 0 14px rgba(255, 246, 196, 1);
       opacity: 0;
       animation: firefly 4.5s linear infinite;
+      pointer-events: none;
       z-index: 1;
     }
-    .firefly--1 { left: 48%; top: 10rem; }
-    .firefly--2 { left: 60%; top: 12rem; }
+
+    .firefly--1 { left: 48%; top: 10.5rem; animation-delay: -0.5s; }
+    .firefly--2 { left: 60%; top: 11.5rem; animation-delay: -1.3s; }
+    .firefly--3 { left: 38%; top: 12rem; animation-delay: -2.1s; }
+    .firefly--4 { left: 55%; top: 13rem; animation-delay: -2.7s; }
+    .firefly--5 { left: 30%; top: 11rem; animation-delay: -3.1s; }
+    .firefly--6 { left: 68%; top: 11.8rem; animation-delay: -3.7s; }
 
     @keyframes firefly {
-      0% { transform: translateY(0) scale(0.5); opacity: 0; }
-      50% { opacity: 1; }
-      100% { transform: translateY(-50px) scale(0.4); opacity: 0; }
+      0% { transform: translate(0,0) scale(0.5); opacity: 0; }
+      20% { opacity: 1; }
+      60% { transform: translate(12px,-34px) scale(1.05); opacity: 1; }
+      100% { transform: translate(-8px,-70px) scale(0.4); opacity: 0; }
     }
 
-    /* CONTEÚDO */
-    main { margin: 5rem 0; }
+    /* CONTEÚDO PRINCIPAL */
+    main {
+      margin: 5rem 0;
+    }
 
     .title-container {
       display: flex;
@@ -101,8 +124,11 @@
       text-align: center;
     }
 
-    .title-container h1 { font-size: 3.2rem; }
+    .title-container h1 {
+      font-size: 3.2rem;
+    }
 
+    /* BOTÃO WHATSAPP */
     .btn-whatsapp {
       background-color: #25d366;
       color: white;
@@ -114,166 +140,161 @@
       display: flex;
       align-items: center;
       gap: 1rem;
-      transition: 0.3s;
+      transition: transform 0.3s, background-color 0.3s;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     }
 
-    /* CARROSSEL */
-    .container { max-width: 120rem; margin: 0 auto; padding: 0 2rem; }
-    
+    .btn-whatsapp:hover {
+      background-color: #1eb954;
+      transform: scale(1.05);
+    }
+
+    .container {
+      max-width: 120rem;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* SWIPER (Carrossel) */
     .trending-slider {
-      padding: 2rem 0 8rem;
-      overflow: visible; /* Importante para o card não cortar */
+      padding: 4rem 0 6rem;
     }
 
     .trending-slide {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 35rem;
-      transition: 0.5s;
+      justify-content: center;
+      background: transparent; /* Remove qualquer fundo do slide */
     }
 
     .trending-slide-img img {
-      width: 100%;
-      height: 38rem;
+      width: 37rem;
+      height: 42rem;
       border-radius: 2rem;
       object-fit: cover;
+      box-shadow: none; /* REMOVIDO: Sombra da imagem */
     }
 
-    /* CARD DE INFORMAÇÕES (EFEITO GELO E ELÁSTICO) */
-    .product-card {
-      background: rgba(240, 245, 255, 0.75); /* Tom gelo transparente */
-      backdrop-filter: blur(10px); /* Desfoque de fundo */
-      color: #333;
-      width: 90%;
-      padding: 2rem;
-      border-radius: 2rem;
+    /* Ajuste das Setas (Removendo fundos e sombras) */
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #fff !important;
+      background: transparent !important; /* REMOVIDO: Fundo escuro */
+      box-shadow: none !important; /* REMOVIDO: Sombra das setas */
+    }
+
+    /* Remove o efeito de bloco que o Swiper às vezes coloca por padrão */
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+      background: transparent !important;
+    }
+
+    .swiper-pagination-bullet {
+        background: #fff;
+    }
+
+    /* REDES SOCIAIS */
+    .social {
       text-align: center;
-      margin-top: -3rem; /* Sobe um pouco para sobrepor a foto levemente */
-      z-index: 5;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      
-      /* Estado Inicial (Escondido e encolhido) */
-      opacity: 0;
-      visibility: hidden;
-      transform: scale(0.7) translateY(20px);
-      transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Efeito Elástico */
+      margin-bottom: 3rem;
     }
 
-    /* MOSTRAR APENAS NO SLIDE ATIVO (CENTRALIZADO) */
-    .swiper-slide-active .product-card {
-      opacity: 1;
-      visibility: visible;
-      transform: scale(1) translateY(0);
+    .social i {
+      font-size: 2.4rem;
+      margin: 0 1rem;
+      transition: 0.3s;
+      cursor: pointer;
+      color: white;
     }
 
-    .product-card h3 {
-      color: #6a0dad;
-      font-size: 2.2rem;
-      margin-bottom: 0.8rem;
+    .social i:hover {
+      opacity: 0.7;
     }
 
-    .product-card p {
-      font-size: 1.5rem;
-      font-weight: 500;
-      margin: 0.3rem 0;
-    }
-
-    /* SETAS */
-    .swiper-button-next, .swiper-button-prev { 
-      color: #fff !important; 
-      background: none !important;
-    }
-    .swiper-button-next::after, .swiper-button-prev::after { font-size: 3rem; }
-
-    .swiper-pagination-bullet-active { background: #fff !important; }
-
-    .social { text-align: center; margin-top: 2rem; }
-    .social i { font-size: 2.4rem; margin: 0 1rem; color: white; }
-
+    /* RESPONSIVO */
     @media (max-width: 768px) {
-      .trending-slide { width: 28rem; }
-      .header-center-img img { height: 18rem; }
+      header {
+        height: 15rem;
+      }
+
+      .header-center-img img {
+        height: 18rem;
+      }
+
+      .trending-slide-img img {
+        width: 26rem;
+        height: 30rem;
+      }
+
+      .title-container h1 {
+        font-size: 2.4rem;
+      }
     }
   </style>
 </head>
 
 <body>
 
+  <!-- HEADER -->
   <header>
     <div class="firefly firefly--1"></div>
     <div class="firefly firefly--2"></div>
-    <div class="header-center-img"><img src="logogiovana.png" alt="Logo"></div>
-    <div class="icon-cart"><img src="img/cart.png" alt="Carrinho"></div>
+    <div class="firefly firefly--3"></div>
+    <div class="firefly firefly--4"></div>
+    <div class="firefly firefly--5"></div>
+    <div class="firefly firefly--6"></div>
+
+    <div class="header-center-img">
+      <img src="logogiovana.png" alt="Logo Giovana" />
+    </div>
+
+    <div class="icon-cart">
+      <img src="img/cart.png" alt="Carrinho" />
+    </div>
   </header>
 
+  <!-- CONTEÚDO PRINCIPAL -->
   <main>
     <div class="title-container">
       <h1>Feito à mão e com Coração!</h1>
+      
+      <!-- Botão do WhatsApp -->
       <a href="https://wa.me/556281890481" class="btn-whatsapp" target="_blank">
-        <i class="fab fa-whatsapp"></i> Peça pelo WhatsApp
+        <i class="fab fa-whatsapp"></i>
+        Peça pelo WhatsApp
       </a>
     </div>
 
-    <div class="container">
-      <div class="swiper trending-slider">
-        <div class="swiper-wrapper">
-          
-          <!-- Slide 1: CENOURA -->
-          <div class="swiper-slide trending-slide">
-            <div class="trending-slide-img"><img src="cenoura.png"></div>
-            <div class="product-card">
-              <h3>Sabor Cenoura</h3>
-              <p>Recheio de chocolate meio amargo</p>
-              <p>Leite condensado cremoso</p>
-            </div>
+    <section id="trending">
+      <div class="container">
+        <div class="swiper trending-slider">
+          <div class="swiper-wrapper">
+            <!-- Suas Imagens -->
+            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="marron.png"></div></div>
+            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="cenoura.png"></div></div>
+            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="branco.png"></div></div>
+            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="3bolo.png"></div></div>
+            
+            <!-- Outras imagens (ajuste o caminho se necessário) -->
+            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="img/cupcake-pink.png"></div></div>
+            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="img/cupcake-blue.png"></div></div>
+            <div class="swiper-slide trending-slide"><div class="trending-slide-img"><img src="img/cupcake-purple.png"></div></div>
           </div>
 
-          <!-- Slide 2: MARROM -->
-          <div class="swiper-slide trending-slide">
-            <div class="trending-slide-img"><img src="marron.png"></div>
-            <div class="product-card">
-              <h3>Sabor Chocolate</h3>
-              <p>Massa fofinha de cacau</p>
-              <p>Cobertura de brigadeiro gourmet</p>
-            </div>
-          </div>
-
-          <!-- Slide 3: BRANCO -->
-          <div class="swiper-slide trending-slide">
-            <div class="trending-slide-img"><img src="branco.png"></div>
-            <div class="product-card">
-              <h3>Sabor Ninho</h3>
-              <p>Creme de leite ninho original</p>
-              <p>Toque suave de baunilha</p>
-            </div>
-          </div>
-
-          <!-- Slide 4: 3BOLO -->
-          <div class="swiper-slide trending-slide">
-            <div class="trending-slide-img"><img src="3bolo.png"></div>
-            <div class="product-card">
-              <h3>Combo Festa</h3>
-              <p>Três camadas de pura gostosura</p>
-              <p>Ideal para compartilhar</p>
-            </div>
-          </div>
-
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
         </div>
-        <!-- Controles -->
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
       </div>
-    </div>
+    </section>
   </main>
 
+  <!-- REDES SOCIAIS -->
   <div class="social">
     <i class="fab fa-instagram"></i>
     <i class="fab fa-facebook"></i>
   </div>
 
+  <!-- SCRIPTS -->
   <script src="https://unpkg.com/swiper@11/swiper-bundle.min.js"></script>
   <script>
     new Swiper(".trending-slider", {
@@ -281,16 +302,22 @@
       centeredSlides: true,
       loop: true,
       slidesPerView: "auto",
-      speed: 800,
       coverflowEffect: {
         rotate: 0,
-        depth: 150,
-        modifier: 1,
-        slideShadows: false
+        depth: 100,
+        modifier: 2.5,
+        slideShadows: false // DESATIVADO: Remove a sombra/brilho escuro sobre os cards laterais
       },
-      pagination: { el: ".swiper-pagination", clickable: true },
-      navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev"
+      }
     });
   </script>
+
 </body>
 </html>
