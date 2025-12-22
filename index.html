@@ -66,7 +66,6 @@
     .icon-cart img {
       width: 6rem;
       border-radius: 50%;
-      transition: 0.5s;
     }
 
     /* VAGALUMES */
@@ -81,9 +80,8 @@
       animation: firefly 4.5s linear infinite;
       z-index: 1;
     }
-    .firefly--1 { left: 48%; top: 10rem; animation-delay: -0.5s; }
-    .firefly--2 { left: 60%; top: 12rem; animation-delay: -1.3s; }
-    .firefly--3 { left: 35%; top: 11rem; animation-delay: -2s; }
+    .firefly--1 { left: 48%; top: 10rem; }
+    .firefly--2 { left: 60%; top: 12rem; }
 
     @keyframes firefly {
       0% { transform: translateY(0) scale(0.5); opacity: 0; }
@@ -119,54 +117,80 @@
       transition: 0.3s;
     }
 
-    .btn-whatsapp:hover { transform: scale(1.05); background-color: #1eb954; }
-
-    /* CARROSSEL E CARDS */
+    /* CARROSSEL */
     .container { max-width: 120rem; margin: 0 auto; padding: 0 2rem; }
     
+    .trending-slider {
+      padding: 2rem 0 8rem;
+      overflow: visible; /* Importante para o card não cortar */
+    }
+
     .trending-slide {
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 37rem;
+      width: 35rem;
+      transition: 0.5s;
     }
 
     .trending-slide-img img {
       width: 100%;
       height: 38rem;
-      border-radius: 2rem 2rem 0 0; /* Arredondado só em cima */
+      border-radius: 2rem;
       object-fit: cover;
     }
 
-    /* CARD DE INFORMAÇÕES */
+    /* CARD DE INFORMAÇÕES (EFEITO GELO E ELÁSTICO) */
     .product-card {
-      background: white;
+      background: rgba(240, 245, 255, 0.75); /* Tom gelo transparente */
+      backdrop-filter: blur(10px); /* Desfoque de fundo */
       color: #333;
-      width: 100%;
+      width: 90%;
       padding: 2rem;
-      border-radius: 0 0 2rem 2rem; /* Arredondado só embaixo */
+      border-radius: 2rem;
       text-align: center;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      margin-top: -3rem; /* Sobe um pouco para sobrepor a foto levemente */
+      z-index: 5;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      
+      /* Estado Inicial (Escondido e encolhido) */
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.7) translateY(20px);
+      transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Efeito Elástico */
+    }
+
+    /* MOSTRAR APENAS NO SLIDE ATIVO (CENTRALIZADO) */
+    .swiper-slide-active .product-card {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1) translateY(0);
     }
 
     .product-card h3 {
       color: #6a0dad;
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
+      font-size: 2.2rem;
+      margin-bottom: 0.8rem;
     }
 
     .product-card p {
-      font-size: 1.4rem;
-      line-height: 1.6;
-      margin: 0.2rem 0;
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin: 0.3rem 0;
     }
 
-    .swiper-button-next, .swiper-button-prev { color: #fff !important; }
-    .swiper-pagination-bullet { background: #fff; }
+    /* SETAS */
+    .swiper-button-next, .swiper-button-prev { 
+      color: #fff !important; 
+      background: none !important;
+    }
+    .swiper-button-next::after, .swiper-button-prev::after { font-size: 3rem; }
 
-    .social { text-align: center; margin-top: 4rem; }
-    .social i { font-size: 2.4rem; margin: 0 1rem; color: white; cursor: pointer; }
+    .swiper-pagination-bullet-active { background: #fff !important; }
+
+    .social { text-align: center; margin-top: 2rem; }
+    .social i { font-size: 2.4rem; margin: 0 1rem; color: white; }
 
     @media (max-width: 768px) {
       .trending-slide { width: 28rem; }
@@ -180,7 +204,6 @@
   <header>
     <div class="firefly firefly--1"></div>
     <div class="firefly firefly--2"></div>
-    <div class="firefly firefly--3"></div>
     <div class="header-center-img"><img src="logogiovana.png" alt="Logo"></div>
     <div class="icon-cart"><img src="img/cart.png" alt="Carrinho"></div>
   </header>
@@ -207,7 +230,7 @@
             </div>
           </div>
 
-          <!-- Slide 2: MARRON -->
+          <!-- Slide 2: MARROM -->
           <div class="swiper-slide trending-slide">
             <div class="trending-slide-img"><img src="marron.png"></div>
             <div class="product-card">
@@ -238,6 +261,7 @@
           </div>
 
         </div>
+        <!-- Controles -->
         <div class="swiper-pagination"></div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
@@ -257,10 +281,11 @@
       centeredSlides: true,
       loop: true,
       slidesPerView: "auto",
+      speed: 800,
       coverflowEffect: {
         rotate: 0,
-        depth: 100,
-        modifier: 2.5,
+        depth: 150,
+        modifier: 1,
         slideShadows: false
       },
       pagination: { el: ".swiper-pagination", clickable: true },
