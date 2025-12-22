@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gostosuras da Gi - Vitrine Limpa</title>
+  <title>Gostosuras da Gi - Oficial</title>
 
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://unpkg.com/swiper@11/swiper-bundle.min.css" />
@@ -25,134 +25,167 @@
       flex-direction: column;
     }
 
-    /* HEADER */
+    /* HEADER COM VAGALUMES */
     header {
       background: black;
-      height: 12rem;
+      height: 18rem;
       display: flex;
       justify-content: center;
       align-items: center;
       position: relative;
+      overflow: hidden; /* Garante que os vagalumes não saiam da faixa */
     }
-    .header-logo { height: 10rem; }
 
-    /* BOTÃO WHATSAPP NO TOPO */
+    .header-logo { 
+      height: 15rem; 
+      z-index: 10; /* Fica acima dos vagalumes */
+      position: relative;
+    }
+
+    /* EFEITO VAGALUMES */
+    .firefly {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #fffce1 0%, #ffe26f 45%, transparent 70%);
+      box-shadow: 0 0 15px #fff6c4;
+      opacity: 0;
+      animation: moveFirefly 5s linear infinite;
+      z-index: 1;
+    }
+
+    /* Posições variadas para os vagalumes */
+    .firefly--1 { left: 20%; top: 40%; animation-delay: 0s; }
+    .firefly--2 { left: 45%; top: 20%; animation-delay: -1.5s; }
+    .firefly--3 { left: 75%; top: 50%; animation-delay: -3s; }
+    .firefly--4 { left: 55%; top: 70%; animation-delay: -4s; }
+    .firefly--5 { left: 35%; top: 80%; animation-delay: -2.5s; }
+
+    @keyframes moveFirefly {
+      0% { transform: translate(0, 0) scale(0.5); opacity: 0; }
+      30% { opacity: 1; }
+      70% { opacity: 1; }
+      100% { transform: translate(20px, -40px) scale(0.3); opacity: 0; }
+    }
+
+    /* BOTÃO WHATSAPP */
     .top-action {
       display: flex;
       justify-content: center;
-      padding: 2rem 0;
+      padding: 3rem 0;
     }
     .btn-whatsapp {
       background-color: #25d366;
       color: white;
       text-decoration: none;
-      padding: 1.2rem 2.5rem;
+      padding: 1.4rem 3rem;
       border-radius: 5rem;
       font-weight: bold;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       display: flex;
       align-items: center;
-      gap: 1rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      transition: 0.3s;
+      gap: 1.2rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-    .btn-whatsapp:hover { transform: scale(1.05); }
+    .btn-whatsapp:hover { transform: scale(1.1); }
 
-    /* CONTAINER DO CARROSSEL */
+    /* CARROSSEL ORGANIZADO */
     .main-carousel-container {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding-bottom: 5rem;
+      padding-bottom: 4rem;
     }
 
     .swiper {
       width: 100%;
-      max-width: 50rem; /* Limita a largura para ficar organizado */
-      padding-bottom: 5rem;
+      max-width: 45rem;
+      overflow: visible; /* Necessário para o efeito do card não cortar */
     }
 
     .swiper-slide {
       display: flex;
       flex-direction: column;
       align-items: center;
+      opacity: 0.3; /* Slides laterais ficam mais apagados */
       transition: 0.5s;
     }
 
+    .swiper-slide-active { opacity: 1; }
+
     .product-img {
-      width: 32rem;
-      height: 32rem;
-      object-fit: contain; /* Garante que o pote apareça inteiro sem cortes */
-      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+      width: 35rem;
+      height: 35rem;
+      object-fit: contain;
+      filter: drop-shadow(0 15px 25px rgba(0,0,0,0.4));
     }
 
     /* CARD GELO ELÁSTICO */
     .info-card {
-      background: rgba(255, 255, 255, 0.15); /* Tom gelo */
-      backdrop-filter: blur(15px); /* Efeito transparente */
-      -webkit-backdrop-filter: blur(15px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 2.5rem;
+      background: rgba(255, 255, 255, 0.2); /* Tom gelo */
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 3rem;
       padding: 2.5rem;
-      width: 90%;
-      margin-top: 2rem;
+      width: 95%;
+      margin-top: 1rem;
       text-align: center;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
       
-      /* Animação Elástica Inicial */
-      transform: scale(0.8) translateY(30px);
+      /* Efeito Elástico ao entrar */
+      transform: scale(0.7) translateY(40px);
       opacity: 0;
-      transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      transition: all 0.7s cubic-bezier(0.68, -0.6, 0.3, 1.6);
     }
 
-    /* Quando o slide fica ativo, o card "pula" pra tela */
+    /* Mostra o card apenas quando o slide estiver centralizado */
     .swiper-slide-active .info-card {
       transform: scale(1) translateY(0);
       opacity: 1;
     }
 
     .info-card h3 {
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
+      font-size: 2.4rem;
+      margin-bottom: 0.5rem;
       color: #fff;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
     }
 
     .info-card p {
-      font-size: 1.5rem;
-      color: rgba(255,255,255,0.9);
-      line-height: 1.4;
+      font-size: 1.6rem;
+      color: rgba(255,255,255,0.95);
     }
 
-    /* SETAS DE NAVEGAÇÃO NAS EXTREMIDADES */
-    .swiper-button-next, .swiper-button-prev {
-      color: white !important;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    
-    /* PAGINAÇÃO (BOLINHAS) */
-    .swiper-pagination-bullet { background: rgba(255,255,255,0.5); opacity: 1; }
-    .swiper-pagination-bullet-active { background: white; width: 2rem; border-radius: 1rem; }
+    /* SETAS E PAGINAÇÃO */
+    .swiper-button-next, .swiper-button-prev { color: white !important; }
+    .swiper-pagination-bullet { background: rgba(255,255,255,0.4); opacity: 1; }
+    .swiper-pagination-bullet-active { background: white; }
 
-    /* RODAPÉ SOCIAL */
-    footer {
-      text-align: center;
-      padding: 2rem;
-    }
-    footer i { font-size: 2.4rem; margin: 0 1.5rem; color: white; cursor: pointer; }
+    /* REDES SOCIAIS */
+    footer { text-align: center; padding: 3rem; }
+    footer i { font-size: 2.6rem; margin: 0 1.5rem; color: white; cursor: pointer; }
 
     @media (max-width: 480px) {
-      .product-img { width: 25rem; height: 25rem; }
-      .swiper { max-width: 90%; }
+      .product-img { width: 28rem; height: 28rem; }
+      header { height: 14rem; }
+      .header-logo { height: 11rem; }
     }
   </style>
 </head>
 <body>
 
+  <!-- HEADER COM VAGALUMES -->
   <header>
-    <img src="logogiovana.png" alt="Gostosuras da Gi" class="header-logo">
+    <div class="firefly firefly--1"></div>
+    <div class="firefly firefly--2"></div>
+    <div class="firefly firefly--3"></div>
+    <div class="firefly firefly--4"></div>
+    <div class="firefly firefly--5"></div>
+    
+    <img src="logogiovana.png" alt="Logo" class="header-logo">
   </header>
 
   <div class="top-action">
@@ -165,19 +198,9 @@
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
         
-        <!-- Pote 1 -->
+        <!-- Produto 1 -->
         <div class="swiper-slide">
-          <img src="marron.png" alt="Pote Marrom" class="product-img">
-          <div class="info-card">
-            <h3>Sabor Chocolate</h3>
-            <p>Massa fofinha de cacau</p>
-            <p>Cobertura de brigadeiro gourmet</p>
-          </div>
-        </div>
-
-        <!-- Pote 2 -->
-        <div class="swiper-slide">
-          <img src="cenoura.png" alt="Pote Cenoura" class="product-img">
+          <img src="cenoura.png" class="product-img">
           <div class="info-card">
             <h3>Sabor Cenoura</h3>
             <p>Recheio de chocolate meio amargo</p>
@@ -185,9 +208,19 @@
           </div>
         </div>
 
-        <!-- Pote 3 -->
+        <!-- Produto 2 -->
         <div class="swiper-slide">
-          <img src="branco.png" alt="Pote Branco" class="product-img">
+          <img src="marron.png" class="product-img">
+          <div class="info-card">
+            <h3>Sabor Chocolate</h3>
+            <p>Massa fofinha de cacau</p>
+            <p>Cobertura de brigadeiro gourmet</p>
+          </div>
+        </div>
+
+        <!-- Produto 3 -->
+        <div class="swiper-slide">
+          <img src="branco.png" class="product-img">
           <div class="info-card">
             <h3>Sabor Ninho</h3>
             <p>Creme de leite ninho original</p>
@@ -195,9 +228,9 @@
           </div>
         </div>
 
-        <!-- Pote 4 -->
+        <!-- Produto 4 -->
         <div class="swiper-slide">
-          <img src="3bolo.png" alt="Combo" class="product-img">
+          <img src="3bolo.png" class="product-img">
           <div class="info-card">
             <h3>Combo Festa</h3>
             <p>Três camadas de pura gostosura</p>
@@ -219,16 +252,15 @@
     <i class="fab fa-facebook"></i>
   </footer>
 
-  <!-- Swiper JS -->
   <script src="https://unpkg.com/swiper@11/swiper-bundle.min.js"></script>
 
   <script>
     var swiper = new Swiper(".mySwiper", {
-      slidesPerView: 1, // Apenas um pote por vez
-      spaceBetween: 30,
+      slidesPerView: 1, 
+      spaceBetween: 50,
       loop: true,
       centeredSlides: true,
-      speed: 600,
+      speed: 800,
       pagination: {
         el: ".swiper-pagination",
         clickable: true,
