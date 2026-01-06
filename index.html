@@ -103,14 +103,14 @@
     .swiper {
       width: 100%;
       max-width: 45rem;
-      overflow: hidden; /* ✅ CORREÇÃO: impede o vazamento dos slides laterais */
+      overflow: hidden; /* impede o vazamento dos slides laterais */
     }
 
     .swiper-slide {
       display: flex;
       flex-direction: column;
       align-items: center;
-      opacity: 1; /* ✅ CORREÇÃO: remove transparência dos slides "não ativos" */
+      opacity: 1; /* sem transparência lateral */
       transition: 0.5s;
     }
 
@@ -258,7 +258,14 @@
       spaceBetween: 50,
       loop: true,
       centeredSlides: true,
-      speed: 800,
+
+      /* ✅ AJUSTES APENAS NA TRANSIÇÃO/SENSAÇÃO */
+      speed: 380,              // antes: 800 (bem mais rápido e leve)
+      followFinger: true,      // sensação mais responsiva
+      shortSwipes: true,       // troca com swipe curto
+      resistanceRatio: 0.85,   // menos “borracha”, mais rápido
+      touchReleaseOnEdges: true,
+
       pagination: {
         el: ".swiper-pagination",
         clickable: true,
