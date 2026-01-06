@@ -142,6 +142,27 @@
       opacity: 1;
     }
 
+    .info-card h3 {
+      font-size: 2.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .info-card p {
+      font-size: 1.6rem;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev { color: white !important; }
+
+    .swiper-pagination-bullet {
+      background: rgba(255,255,255,0.4);
+      opacity: 1;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: white;
+    }
+
     footer {
       text-align: center;
       padding: 3rem;
@@ -153,16 +174,25 @@
       color: white;
     }
 
-    /* 🔴 ÚNICA ALTERAÇÃO: MOBILE — LOGO NO LIMITE MÁXIMO */
+    /* MOBILE */
     @media (max-width: 480px) {
+      /* ✅ manter imagem do produto em 28rem */
       .product-img { width: 28rem; height: 28rem; }
+
+      /* ✅ você definiu 26rem (mantido) */
       header { height: 26rem; }
 
       .header-logo {
-        height: 100%;        /* ✅ ocupa 100% da faixa preta */
-        max-height: 100%;    /* ✅ nunca ultrapassa */
+        height: 100%;
+        max-height: 100%;
         width: auto;
-        object-fit: contain; /* ✅ sem corte */
+        object-fit: contain;
+      }
+
+      /* ✅ remover setas no mobile (swipe apenas) */
+      .swiper-button-next,
+      .swiper-button-prev {
+        display: none !important;
       }
     }
   </style>
@@ -190,7 +220,7 @@
     <div class="swiper-wrapper">
 
       <div class="swiper-slide">
-        <img src="cenoura.png" class="product-img">
+        <img src="cenoura.png" class="product-img" alt="Bolo sabor cenoura">
         <div class="info-card">
           <h3>Sabor Cenoura</h3>
           <p>Recheio de chocolate meio amargo</p>
@@ -199,7 +229,7 @@
       </div>
 
       <div class="swiper-slide">
-        <img src="marron.png" class="product-img">
+        <img src="marron.png" class="product-img" alt="Bolo sabor chocolate">
         <div class="info-card">
           <h3>Sabor Chocolate</h3>
           <p>Massa fofinha de cacau</p>
@@ -208,7 +238,7 @@
       </div>
 
       <div class="swiper-slide">
-        <img src="branco.png" class="product-img">
+        <img src="branco.png" class="product-img" alt="Bolo sabor ninho">
         <div class="info-card">
           <h3>Sabor Ninho</h3>
           <p>Creme de leite ninho original</p>
@@ -217,7 +247,7 @@
       </div>
 
       <div class="swiper-slide">
-        <img src="3bolo.png" class="product-img">
+        <img src="3bolo.png" class="product-img" alt="Combo festa">
         <div class="info-card">
           <h3>Combo Festa</h3>
           <p>Três camadas de pura gostosura</p>
@@ -245,11 +275,13 @@
     spaceBetween: 50,
     loop: true,
     centeredSlides: true,
+
     speed: 380,
     followFinger: true,
     shortSwipes: true,
     resistanceRatio: 0.85,
     touchReleaseOnEdges: true,
+
     pagination: { el: ".swiper-pagination", clickable: true },
     navigation: {
       nextEl: ".swiper-button-next",
