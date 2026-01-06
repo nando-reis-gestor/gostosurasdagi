@@ -103,18 +103,16 @@
     .swiper {
       width: 100%;
       max-width: 45rem;
-      overflow: visible; /* Necessário para o efeito do card não cortar */
+      overflow: hidden; /* ✅ CORREÇÃO: impede o vazamento dos slides laterais */
     }
 
     .swiper-slide {
       display: flex;
       flex-direction: column;
       align-items: center;
-      opacity: 0.3; /* Slides laterais ficam mais apagados */
+      opacity: 1; /* ✅ CORREÇÃO: remove transparência dos slides "não ativos" */
       transition: 0.5s;
     }
-
-    .swiper-slide-active { opacity: 1; }
 
     .product-img {
       width: 35rem;
@@ -200,7 +198,7 @@
         
         <!-- Produto 1 -->
         <div class="swiper-slide">
-          <img src="cenoura.png" class="product-img">
+          <img src="cenoura.png" class="product-img" alt="Bolo sabor cenoura">
           <div class="info-card">
             <h3>Sabor Cenoura</h3>
             <p>Recheio de chocolate meio amargo</p>
@@ -210,7 +208,7 @@
 
         <!-- Produto 2 -->
         <div class="swiper-slide">
-          <img src="marron.png" class="product-img">
+          <img src="marron.png" class="product-img" alt="Bolo sabor chocolate">
           <div class="info-card">
             <h3>Sabor Chocolate</h3>
             <p>Massa fofinha de cacau</p>
@@ -220,7 +218,7 @@
 
         <!-- Produto 3 -->
         <div class="swiper-slide">
-          <img src="branco.png" class="product-img">
+          <img src="branco.png" class="product-img" alt="Bolo sabor ninho">
           <div class="info-card">
             <h3>Sabor Ninho</h3>
             <p>Creme de leite ninho original</p>
@@ -230,7 +228,7 @@
 
         <!-- Produto 4 -->
         <div class="swiper-slide">
-          <img src="3bolo.png" class="product-img">
+          <img src="3bolo.png" class="product-img" alt="Combo festa">
           <div class="info-card">
             <h3>Combo Festa</h3>
             <p>Três camadas de pura gostosura</p>
@@ -256,7 +254,7 @@
 
   <script>
     var swiper = new Swiper(".mySwiper", {
-      slidesPerView: 1, 
+      slidesPerView: 1,
       spaceBetween: 50,
       loop: true,
       centeredSlides: true,
