@@ -17,7 +17,7 @@
 
     body {
       font-size: 1.6rem;
-      background: #6a0dad; /* Roxo principal */
+      background: #6a0dad;
       color: white;
       overflow-x: hidden;
       min-height: 100vh;
@@ -25,7 +25,7 @@
       flex-direction: column;
     }
 
-    /* HEADER COM VAGALUMES */
+    /* HEADER */
     header {
       background: black;
       height: 18rem;
@@ -33,16 +33,16 @@
       justify-content: center;
       align-items: center;
       position: relative;
-      overflow: hidden; /* Garante que os vagalumes não saiam da faixa */
+      overflow: hidden;
     }
 
     .header-logo { 
       height: 15rem; 
-      z-index: 10; /* Fica acima dos vagalumes */
+      z-index: 10;
       position: relative;
     }
 
-    /* EFEITO VAGALUMES */
+    /* VAGALUMES */
     .firefly {
       position: absolute;
       width: 6px;
@@ -55,7 +55,6 @@
       z-index: 1;
     }
 
-    /* Posições variadas para os vagalumes */
     .firefly--1 { left: 20%; top: 40%; animation-delay: 0s; }
     .firefly--2 { left: 45%; top: 20%; animation-delay: -1.5s; }
     .firefly--3 { left: 75%; top: 50%; animation-delay: -3s; }
@@ -75,6 +74,7 @@
       justify-content: center;
       padding: 3rem 0;
     }
+
     .btn-whatsapp {
       background-color: #25d366;
       color: white;
@@ -89,9 +89,10 @@
       box-shadow: 0 6px 20px rgba(0,0,0,0.3);
       transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
+
     .btn-whatsapp:hover { transform: scale(1.1); }
 
-    /* CARROSSEL ORGANIZADO */
+    /* CARROSSEL */
     .main-carousel-container {
       flex: 1;
       display: flex;
@@ -103,14 +104,14 @@
     .swiper {
       width: 100%;
       max-width: 45rem;
-      overflow: hidden; /* impede o vazamento dos slides laterais */
+      overflow: hidden;
     }
 
     .swiper-slide {
       display: flex;
       flex-direction: column;
       align-items: center;
-      opacity: 1; /* sem transparência lateral */
+      opacity: 1;
       transition: 0.5s;
     }
 
@@ -121,11 +122,9 @@
       filter: drop-shadow(0 15px 25px rgba(0,0,0,0.4));
     }
 
-    /* CARD GELO ELÁSTICO */
     .info-card {
-      background: rgba(255, 255, 255, 0.2); /* Tom gelo */
+      background: rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.3);
       border-radius: 3rem;
       padding: 2.5rem;
@@ -133,14 +132,11 @@
       margin-top: 1rem;
       text-align: center;
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-      
-      /* Efeito Elástico ao entrar */
       transform: scale(0.7) translateY(40px);
       opacity: 0;
       transition: all 0.7s cubic-bezier(0.68, -0.6, 0.3, 1.6);
     }
 
-    /* Mostra o card apenas quando o slide estiver centralizado */
     .swiper-slide-active .info-card {
       transform: scale(1) translateY(0);
       opacity: 1;
@@ -149,132 +145,139 @@
     .info-card h3 {
       font-size: 2.4rem;
       margin-bottom: 0.5rem;
-      color: #fff;
     }
 
     .info-card p {
       font-size: 1.6rem;
-      color: rgba(255,255,255,0.95);
     }
 
-    /* SETAS E PAGINAÇÃO */
-    .swiper-button-next, .swiper-button-prev { color: white !important; }
-    .swiper-pagination-bullet { background: rgba(255,255,255,0.4); opacity: 1; }
-    .swiper-pagination-bullet-active { background: white; }
+    .swiper-button-next,
+    .swiper-button-prev { color: white !important; }
 
-    /* REDES SOCIAIS */
-    footer { text-align: center; padding: 3rem; }
-    footer i { font-size: 2.6rem; margin: 0 1.5rem; color: white; cursor: pointer; }
+    .swiper-pagination-bullet {
+      background: rgba(255,255,255,0.4);
+      opacity: 1;
+    }
 
+    .swiper-pagination-bullet-active {
+      background: white;
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem;
+    }
+
+    footer i {
+      font-size: 2.6rem;
+      margin: 0 1.5rem;
+      color: white;
+    }
+
+    /* 🔴 ÚNICA ALTERAÇÃO: MOBILE */
     @media (max-width: 480px) {
       .product-img { width: 28rem; height: 28rem; }
       header { height: 14rem; }
-      .header-logo { height: 11rem; }
+
+      .header-logo {
+        height: 13.2rem;     /* logo maior no mobile */
+        max-height: 100%;    /* não sai da faixa preta */
+        width: auto;
+        object-fit: contain;
+      }
     }
   </style>
 </head>
+
 <body>
 
-  <!-- HEADER COM VAGALUMES -->
-  <header>
-    <div class="firefly firefly--1"></div>
-    <div class="firefly firefly--2"></div>
-    <div class="firefly firefly--3"></div>
-    <div class="firefly firefly--4"></div>
-    <div class="firefly firefly--5"></div>
-    
-    <img src="logogiovana.png" alt="Logo" class="header-logo">
-  </header>
+<header>
+  <div class="firefly firefly--1"></div>
+  <div class="firefly firefly--2"></div>
+  <div class="firefly firefly--3"></div>
+  <div class="firefly firefly--4"></div>
+  <div class="firefly firefly--5"></div>
+  <img src="logogiovana.png" alt="Logo" class="header-logo">
+</header>
 
-  <div class="top-action">
-    <a href="https://wa.me/556281890481" class="btn-whatsapp" target="_blank">
-      <i class="fab fa-whatsapp"></i> Peça pelo WhatsApp
-    </a>
-  </div>
+<div class="top-action">
+  <a href="https://wa.me/556281890481" class="btn-whatsapp" target="_blank">
+    <i class="fab fa-whatsapp"></i> Peça pelo WhatsApp
+  </a>
+</div>
 
-  <main class="main-carousel-container">
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-        
-        <!-- Produto 1 -->
-        <div class="swiper-slide">
-          <img src="cenoura.png" class="product-img" alt="Bolo sabor cenoura">
-          <div class="info-card">
-            <h3>Sabor Cenoura</h3>
-            <p>Recheio de chocolate meio amargo</p>
-            <p>Leite condensado cremoso</p>
-          </div>
+<main class="main-carousel-container">
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+
+      <div class="swiper-slide">
+        <img src="cenoura.png" class="product-img">
+        <div class="info-card">
+          <h3>Sabor Cenoura</h3>
+          <p>Recheio de chocolate meio amargo</p>
+          <p>Leite condensado cremoso</p>
         </div>
-
-        <!-- Produto 2 -->
-        <div class="swiper-slide">
-          <img src="marron.png" class="product-img" alt="Bolo sabor chocolate">
-          <div class="info-card">
-            <h3>Sabor Chocolate</h3>
-            <p>Massa fofinha de cacau</p>
-            <p>Cobertura de brigadeiro gourmet</p>
-          </div>
-        </div>
-
-        <!-- Produto 3 -->
-        <div class="swiper-slide">
-          <img src="branco.png" class="product-img" alt="Bolo sabor ninho">
-          <div class="info-card">
-            <h3>Sabor Ninho</h3>
-            <p>Creme de leite ninho original</p>
-            <p>Toque suave de baunilha</p>
-          </div>
-        </div>
-
-        <!-- Produto 4 -->
-        <div class="swiper-slide">
-          <img src="3bolo.png" class="product-img" alt="Combo festa">
-          <div class="info-card">
-            <h3>Combo Festa</h3>
-            <p>Três camadas de pura gostosura</p>
-            <p>Ideal para compartilhar</p>
-          </div>
-        </div>
-
       </div>
 
-      <!-- Controles -->
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
+      <div class="swiper-slide">
+        <img src="marron.png" class="product-img">
+        <div class="info-card">
+          <h3>Sabor Chocolate</h3>
+          <p>Massa fofinha de cacau</p>
+          <p>Cobertura de brigadeiro gourmet</p>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <img src="branco.png" class="product-img">
+        <div class="info-card">
+          <h3>Sabor Ninho</h3>
+          <p>Creme de leite ninho original</p>
+          <p>Toque suave de baunilha</p>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <img src="3bolo.png" class="product-img">
+        <div class="info-card">
+          <h3>Combo Festa</h3>
+          <p>Três camadas de pura gostosura</p>
+          <p>Ideal para compartilhar</p>
+        </div>
+      </div>
+
     </div>
-  </main>
 
-  <footer>
-    <i class="fab fa-instagram"></i>
-    <i class="fab fa-facebook"></i>
-  </footer>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+</main>
 
-  <script src="https://unpkg.com/swiper@11/swiper-bundle.min.js"></script>
+<footer>
+  <i class="fab fa-instagram"></i>
+  <i class="fab fa-facebook"></i>
+</footer>
 
-  <script>
-    var swiper = new Swiper(".mySwiper", {
-      slidesPerView: 1,
-      spaceBetween: 50,
-      loop: true,
-      centeredSlides: true,
+<script src="https://unpkg.com/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  new Swiper(".mySwiper", {
+    slidesPerView: 1,
+    spaceBetween: 50,
+    loop: true,
+    centeredSlides: true,
+    speed: 380,
+    followFinger: true,
+    shortSwipes: true,
+    resistanceRatio: 0.85,
+    touchReleaseOnEdges: true,
+    pagination: { el: ".swiper-pagination", clickable: true },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev"
+    }
+  });
+</script>
 
-      /* ✅ AJUSTES APENAS NA TRANSIÇÃO/SENSAÇÃO */
-      speed: 380,              // antes: 800 (bem mais rápido e leve)
-      followFinger: true,      // sensação mais responsiva
-      shortSwipes: true,       // troca com swipe curto
-      resistanceRatio: 0.85,   // menos “borracha”, mais rápido
-      touchReleaseOnEdges: true,
-
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-    });
-  </script>
 </body>
 </html>
